@@ -1,7 +1,7 @@
 @echo off
 set log=echo. [%time:~,-3%]
 :: VGD - Virtual Graphic desktop
-set ver=1_6_1
+set ver=1_3
 
 set background=F
 set text=8
@@ -102,6 +102,7 @@ title
 set "0b8n=INF"
 set "1b8n=REB"
 set "2b8n=UPD"
+set "3b8n=SET"
 cls
 echo.
 echo. [!0B0N!]   [!0B1N!]   [!0B2N!]   [!0B3N!]   [!0B4N!]   [!0B5N!]   [!0B6N!]   [!0B7N!]   [!0B8N!]   
@@ -222,6 +223,24 @@ if exist "data\App\%usesector%" (
 	)
 
 cls
+
+if "%x% %y%"=="8 3" (
+	cls
+	echo.________________________________________________________________________
+	echo.                                           ^|                           ^|
+	echo. [1] Personalization                       ^|  [Q] - Close this window  ^|
+	echo.   ^| Change os to your preferred style.    ^|___________________________^|
+	echo.   ^| cursor, color,and more.               ^|
+	echo.___^|_______________________________________^|
+	echo.  ^|                                     ^|
+	echo.  ^| [2] Text bord style                 ^|
+	echo.  ^|   ^| ???                             ^|
+	echo.  ^|_____________________________________^|
+
+	choice /c:q > nul
+	if !errorlevel!==1 goto MyDesktopSystem
+	)
+
 if "%x% %y%"=="8 2" (
 rd /s /q data\temp
 md data\temp
@@ -235,7 +254,6 @@ del /s /q data\temp\ver.os > nul
 %log% [Y\N]
 choice /c:yn > nul
 if !errorlevel!==2 goto MyDesktopSystem
-echo !errorlevel! %errorlevel%
 echo.
 powershell -command "Invoke-WebRequest https://codeload.github.com/Lokit683/VGD/zip/refs/heads/main -OutFile data\temp\vgd.zip"
 cd /d data\temp
@@ -258,17 +276,13 @@ echo.
 timeout 1 /nobreak > nul
 goto CoreLoading
 )
-if "%x% %y%"=="8 2" (
-echo 1
-)
-
 if "%x% %y%"=="8 0" (
 echo.
 call :color %background%9
 call :echo "      VGD - Virtual graphic desktop"
 echo.     ^|
 echo.     ^| System:
-echo.     ^|   version: 1.6.1
+echo.     ^|   version: 1.3
 echo.     ^|   boot:    waist
 echo.     ^| 
 echo.     ^| User:
