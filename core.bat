@@ -282,7 +282,7 @@ call :color %background%9
 call :echo "      VGD - Virtual graphic desktop"
 echo.     ^|
 echo.     ^| System:
-echo.     ^|   version: 1.3
+echo.     ^|   version: 1.6.1
 echo.     ^|   boot:    waist
 echo.     ^| 
 echo.     ^| User:
