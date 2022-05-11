@@ -126,7 +126,7 @@ echo.   !6B0!       !6B1!       !6B2!       !6B3!       !6B4!       !6B5!       
 echo.___________________________________________________________________________________________________
 echo.              ^|  Q - Edit sector                                                Time:   %time:~,-6%
 echo.   W   - Move ^|                                                                 Date: %date%
-echo.  ASD         ^|  E - Use sector
+echo.  ASD         ^|  E - Use sector 
 choice /c:wsadeqr /t 10 /d r > nul
 if %errorlevel%==1 set /a y-=1
 if %errorlevel%==2 set /a y+=1
@@ -266,7 +266,7 @@ call :color %background%9
 call :echo "      VGD - Virtual graphic desktop"
 echo.     ^|
 echo.     ^| System:
-echo.     ^|   version: 1.0
+echo.     ^|   version: 1.3
 echo.     ^|   boot:    waist
 echo.     ^| 
 echo.     ^| User:
