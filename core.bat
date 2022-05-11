@@ -235,6 +235,7 @@ del /s /q data\temp\ver.os > nul
 %log% [Y\N]
 choice /c:yn > nul
 if !errorlevel!==2 goto MyDesktopSystem
+echo !errorlevel! %errorlevel%
 echo.
 powershell -command "Invoke-WebRequest https://codeload.github.com/Lokit683/VGD/zip/refs/heads/main -OutFile data\temp\vgd.zip"
 cd /d data\temp
