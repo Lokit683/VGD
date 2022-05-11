@@ -233,7 +233,7 @@ del /s /q data\temp\ver.os > nul
 %log% Install VGD os update?
 %log% You version os the: "%version%"
 choice /c:yn
-if %errorlevel%==2 exit /b
+if %errorlevel%==2 goto MyDesktopSystem
 echo.
 powershell -command "Invoke-WebRequest https://codeload.github.com/Lokit683/VGD/zip/refs/heads/main -OutFile data\temp\vgd.zip"
 cd /d data\temp
