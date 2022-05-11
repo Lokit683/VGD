@@ -1,6 +1,6 @@
 @echo off
 :: VGD - Virtual Graphic desktop
-set ver=1_1
+set ver=1_2
 
 set background=F
 set text=8
