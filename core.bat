@@ -1,6 +1,6 @@
 @echo off
 :: VGD - Virtual Graphic desktop
-set ver=1_2
+set ver=1_1
 
 set background=F
 set text=8
@@ -48,6 +48,7 @@ md data\
 md data\userdata\
 md data\function\
 md data\App\
+md data\AppData\
 echo MDR> data\App\mdr.ini
 echo cmd.exe>> data\App\mdr.ini
 call :log Generate boot.ini
@@ -99,6 +100,7 @@ title
 
 set "0b8n=INF"
 set "1b8n=REB"
+set "2b8n=UPD"
 cls
 echo.
 echo. [!0B0N!]   [!0B1N!]   [!0B2N!]   [!0B3N!]   [!0B4N!]   [!0B5N!]   [!0B6N!]   [!0B7N!]   [!0B8N!]   
@@ -205,7 +207,7 @@ goto MyDesktopSystem
 :usesector
 set patch=
 set usesector=
-set /p usesector=<data\function\%y%B%x%\task.txt
+if exist "data\function\%y%B%x%\task.txt" set /p usesector=<data\function\%y%B%x%\task.txt
 set ospatch=%cd%
 if exist "data\App\%usesector%" (
 	(
@@ -213,14 +215,34 @@ if exist "data\App\%usesector%" (
 		set /p patch=
 		) < data\App\%usesector%
 	cd /d data\AppData\%usesector%\
-	echo data\App\%usesector%
-	pause
 	if exist "!patch!" call !patch!
 	cd /d %ospatch%
 	@echo off
 	)
 
 cls
+if "%x% %y%"=="8 2" (
+set log=echo. [%time:~,-3%]
+rd /s /q data\temp
+md data\temp
+cls
+echo.
+call core.bat get ver > data\temp\ver.os
+set /p version=<data\temp\ver.os
+del /s /q data\temp\ver.os > nul
+%log% Install VGD os update?
+%log% You version os the: "%version%"
+choice /c:yn
+if %errorlevel%==2 exit /b
+echo.
+powershell -command "Invoke-WebRequest https://codeload.github.com/Lokit683/VGD/zip/refs/heads/main -OutFile data\temp\vgd.zip"
+cd /d data\temp
+tar.exe -xf vgd.zip
+cd ..\..
+copy data\temp\VGD-main\core.bat core.bat
+rd /s /q data\temp
+
+)
 if "%x% %y%"=="8 1" (
 cls
 echo.
@@ -233,6 +255,9 @@ echo. Bye user..
 echo.
 timeout 1 /nobreak > nul
 goto CoreLoading
+)
+if "%x% %y%"=="8 2" (
+echo 1
 )
 
 if "%x% %y%"=="8 0" (
