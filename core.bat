@@ -1,6 +1,7 @@
 @echo off
+set log=echo. [%time:~,-3%]
 :: VGD - Virtual Graphic desktop
-set ver=1_1
+set ver=1_3
 
 set background=F
 set text=8
@@ -222,7 +223,6 @@ if exist "data\App\%usesector%" (
 
 cls
 if "%x% %y%"=="8 2" (
-set log=echo. [%time:~,-3%]
 rd /s /q data\temp
 md data\temp
 cls
@@ -241,7 +241,7 @@ tar.exe -xf vgd.zip
 cd ..\..
 copy data\temp\VGD-main\core.bat core.bat
 rd /s /q data\temp
-
+goto CoreLoading
 )
 if "%x% %y%"=="8 1" (
 cls
