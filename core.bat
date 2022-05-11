@@ -235,7 +235,6 @@ del /s /q data\temp\ver.os > nul
 %log% [Y\N]
 choice /c:yn > nul
 if !errorlevel!==2 goto MyDesktopSystem
-echo !errorlevel! %errorlevel%
 echo.
 powershell -command "Invoke-WebRequest https://codeload.github.com/Lokit683/VGD/zip/refs/heads/main -OutFile data\temp\vgd.zip"
 cd /d data\temp
@@ -258,10 +257,6 @@ echo.
 timeout 1 /nobreak > nul
 goto CoreLoading
 )
-if "%x% %y%"=="8 2" (
-echo 1
-)
-
 if "%x% %y%"=="8 0" (
 echo.
 call :color %background%9
