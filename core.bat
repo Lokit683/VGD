@@ -60,7 +60,7 @@ set /p user=[%time:~,-3%] ^>
 echo.%user%>>data\userdata\name.txt
 echo.f>>data\userdata\color.txt
 echo.8>>data\userdata\color.txt
-echo.0>>data\userdata\cursour.txt
+echo.^^>data\userdata\cursour.txt
 call :log Reboot...
 timeout 1 /nobreak > nul
 goto CoreLoading
