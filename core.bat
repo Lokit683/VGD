@@ -230,12 +230,12 @@ if "%x% %y%"=="8 3" (
 	echo.                                           ^|                           ^|
 	echo. [1] Personalization                       ^|  [Q] - Close this window  ^|
 	echo.   ^| Change os to your preferred style.    ^|___________________________^|
-	echo.   ^| cursor, color,and more.               ^|
-	echo.___^|_______________________________________^|
-	echo.  ^|                                     ^|
-	echo.  ^| [2] Text bord style                 ^|
-	echo.  ^|   ^| ???                             ^|
-	echo.  ^|_____________________________________^|
+	echo.   ^| cursor, color,and more.               ^|                        ^|
+	echo.___^|_______________________________________^|  [3] System settings   ^|
+	echo.  ^|                                     ^|   ____^|                   ^|
+	echo.  ^| [2] Text bord style                 ^|   ^| Enable/disable system ^|
+	echo.  ^|   ^| ???                             ^|   ^| features              ^|
+	echo.  ^|_____________________________________^|___________________________^|
 
 	choice /c:q1 > nul
 	if !errorlevel!==1 goto MyDesktopSystem
@@ -253,7 +253,7 @@ call :echo "   - Personalization"
 		echo.
 		echo. [3] User name.
 		echo.
-		choice /c:q1 > nul
+		choice /c:q123 > nul
 		if !errorlevel!==1 goto usesector
 		if !errorlevel!==2 (
 			cls
@@ -266,6 +266,20 @@ call :echo "   - Personalization"
 			set /p curs=^>
 			echo !curs:~,1!> data\userdata\cursour.txt
 			set cursour=!curs:~,1!
+			goto usesector
+			)
+
+		)
+			if !errorlevel!==4 (
+			cls
+			echo.
+			call :color %background%a
+			call :echo "   - User name"
+			echo. 
+			echo. [I] Enter new user name.
+			echo.
+			set /p user=^>
+			echo !user! > data\userdata\name.txt
 			goto usesector
 			)
 
