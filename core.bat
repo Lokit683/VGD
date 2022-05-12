@@ -127,8 +127,8 @@ echo. [!6B0N!]   [!6B1N!]   [!6B2N!]   [!6B3N!]   [!6B4N!]   [!6B5N!]   [!6B6N!]
 echo.   !6B0!       !6B1!       !6B2!       !6B3!       !6B4!       !6B5!       !6B6!       !6B7!       !6B8!
 echo.___________________________________________________________________________________________________
 echo.              ^|  Q - Edit sector                                                Time:   %time:~,-6%
-echo.   W   - Move ^|                                                                 Date: %date%
-echo.  ASD         ^|  E - Use sector 
+echo.   W   - Move ^|                
+echo.  ASD         ^|  E - Use sector                                                 Date: %date% 
 choice /c:wsadeqr /t 10 /d r > nul
 if %errorlevel%==1 set /a y-=1
 if %errorlevel%==2 set /a y+=1
@@ -255,6 +255,7 @@ del /s /q data\temp\ver.os > nul
 choice /c:yn > nul
 if !errorlevel!==2 goto MyDesktopSystem
 echo.
+%log% Install update. Please wait..
 powershell -command "Invoke-WebRequest https://codeload.github.com/Lokit683/VGD/zip/refs/heads/main -OutFile data\temp\vgd.zip"
 cd /d data\temp
 tar.exe -xf vgd.zip
