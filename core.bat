@@ -1,7 +1,7 @@
 @echo off
 set log=echo. [%time:~,-3%]
 :: VGD - Virtual Graphic desktop
-set ver=1_6_1
+set ver=1_6_1_4
 
 set background=F
 set text=8
@@ -268,6 +268,8 @@ call :echo "   - Personalization"
 			set cursour=!curs:~,1!
 			goto usesector
 			)
+
+		
 
 		)
 			if !errorlevel!==4 (
