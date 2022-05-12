@@ -229,13 +229,13 @@ if "%x% %y%"=="8 3" (
 	echo.________________________________________________________________________
 	echo.                                           ^|                           ^|
 	echo. [1] Personalization                       ^|  [Q] - Close this window  ^|
-	echo.   ^| Change os to your preferred style.    ^|___________________________^|
-	echo.   ^| cursor, color,and more.               ^|                        ^|
-	echo.___^|_______________________________________^|  [3] System settings   ^|
-	echo.  ^|                                     ^|   ____/                   ^|
-	echo.  ^| [2] Text bord style                 ^|   ^| Enable/disable system ^|
-	echo.  ^|   ^| ???                             ^|   ^| features              ^|
-	echo.  ^|_____________________________________^|___________________________^|
+	echo.   ^| Change os to your preferred style.    ^|___________________________^|_
+	echo.   ^| cursor, color,and more.               ^|                            ^|
+	echo.___^|_______________________________________^|  [3] System settings       ^|
+	echo.  ^|                                     ^|       ^| Enable/disable system ^|
+	echo.  ^| [2] Text bord style                 ^| :^)    ^| features              ^|
+	echo.  ^|   ^| ???                             ^|_______________________________^|
+	echo.  ^|_____________________________________^|
 
 	choice /c:q1 > nul
 	if !errorlevel!==1 goto MyDesktopSystem
