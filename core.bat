@@ -237,8 +237,39 @@ if "%x% %y%"=="8 3" (
 	echo.  ^|   ^| ???                             ^|
 	echo.  ^|_____________________________________^|
 
-	choice /c:q > nul
+	choice /c:q1 > nul
 	if !errorlevel!==1 goto MyDesktopSystem
+	if !errorlevel!==2 (
+		cls
+		echo.
+call :color %background%9
+call :echo "   - Personalization"
+		echo.
+		echo. [Q] Close this window
+		echo.
+		echo. [1] Cursour.
+		echo.
+		echo. [2] Color.
+		echo.
+		echo. [3] User name.
+		echo.
+		choice /c:q1 > nul
+		if !errorlevel!==1 goto usesector
+		if !errorlevel!==2 (
+			cls
+			echo.
+			call :color %background%a
+			call :echo "   - Cursour"
+			echo. 
+			echo. [I] Enter 1 symbol at set at cursor
+			echo.
+			set /p curs=^>
+			echo !curs:~,1!> data\userdata\cursour.txt
+			set cursour=!curs:~,1!
+			goto usesector
+			)
+
+		)
 	)
 
 if "%x% %y%"=="8 2" (
