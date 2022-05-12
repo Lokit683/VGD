@@ -126,14 +126,14 @@ echo.
 echo. [!6B0N!]   [!6B1N!]   [!6B2N!]   [!6B3N!]   [!6B4N!]   [!6B5N!]   [!6B6N!]   [!6B7N!]   [!6B8N!]   
 echo.   !6B0!       !6B1!       !6B2!       !6B3!       !6B4!       !6B5!       !6B6!       !6B7!       !6B8!
 echo.___________________________________________________________________________________________________
-echo.              ^|  Q - Edit sector                                                Time:   %time:~,-6%
-echo.   W   - Move ^|                
-echo.  ASD         ^|  E - Use sector                                                 Date: %date% 
+echo.              ^|  Q - Edit sector                                              ^| Time:   %time:~,-6%
+echo.   W   - Move ^|                                                               ^|-----------------
+echo.  ASD         ^|  E - Use sector                                               ^| Date: %date% 
 choice /c:wsadeqr /t 10 /d r > nul
-if %errorlevel%==1 set /a y-=1
-if %errorlevel%==2 set /a y+=1
-if %errorlevel%==3 set /a x-=1
-if %errorlevel%==4 set /a x+=1
+if %errorlevel%==1 if not %y%==0 set /a y-=1
+if %errorlevel%==2 if not %y%==6 set /a y+=1
+if %errorlevel%==3 if not %x%==0 set /a x-=1
+if %errorlevel%==4 if not %x%==8 set /a x+=1
 if %errorlevel%==5 goto usesector
 if %errorlevel%==6 goto editsector
 goto MyDesktopSystem
