@@ -232,7 +232,7 @@ if "%x% %y%"=="8 3" (
 	echo.   ^| Change os to your preferred style.    ^|___________________________^|
 	echo.   ^| cursor, color,and more.               ^|                        ^|
 	echo.___^|_______________________________________^|  [3] System settings   ^|
-	echo.  ^|                                     ^|   ____^|                   ^|
+	echo.  ^|                                     ^|   ____/                   ^|
 	echo.  ^| [2] Text bord style                 ^|   ^| Enable/disable system ^|
 	echo.  ^|   ^| ???                             ^|   ^| features              ^|
 	echo.  ^|_____________________________________^|___________________________^|
