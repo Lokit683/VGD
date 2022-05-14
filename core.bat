@@ -1,7 +1,7 @@
 @echo off
 set log=echo. [%time:~,-3%]
 :: VGD - Virtual Graphic desktop
-set ver=1_6_1_4
+set ver=1_6_1_6
 
 set background=F
 set text=8
