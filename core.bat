@@ -44,19 +44,25 @@ exit /b
 :onestart
 echo.
 call :log Installing the VGD project on this computer..
+call :log Enter user name:
+set /p user=[%time:~,-3%] ^>
 call :log Generate need patch.
 md data\
 md data\userdata\
 md data\function\
 md data\App\
 md data\AppData\
-echo MDR> data\App\mdr.ini
-echo cmd.exe>> data\App\mdr.ini
+echo SHE> data\App\she.ini
+echo cmd.exe>> data\App\she.ini
+echo file>> data\App\she.ini
+
+echo INF> data\App\inf.ini
+echo MySystInformation>> data\App\inf.ini
+echo app>> data\App\inf.ini
+
 call :log Generate boot.ini
 echo.launch:core>>boot.ini
 echo.
-call :log Enter user name:
-set /p user=[%time:~,-3%] ^>
 echo.%user%>>data\userdata\name.txt
 echo.f>>data\userdata\color.txt
 echo.8>>data\userdata\color.txt
@@ -215,9 +221,11 @@ if exist "data\App\%usesector%" (
 	(
 		set /p %random%=
 		set /p patch=
+		set /p type=
 		) < data\App\%usesector%
-	cd /d data\AppData\%usesector%\
-	if exist "!patch!" call !patch!
+	if "!type!"=="file" cd /d data\AppData\%usesector%\
+	if "!type!"=="file" if exist "!patch!" call !patch!
+	if "!type!"=="app" goto !patch!
 	cd /d %ospatch%
 	@echo off
 	)
@@ -325,6 +333,12 @@ timeout 1 /nobreak > nul
 goto CoreLoading
 )
 if "%x% %y%"=="8 0" (
+goto MySystInformation
+)
+goto MyDesktopSystem
+
+:MySystInformation
+cls
 echo.
 call :color %background%9
 call :echo "      VGD - Virtual graphic desktop"
@@ -342,10 +356,12 @@ echo.     [Q] - Close this window
 echo.
 choice /c:Q > nul
 goto MyDesktopSystem
-)
+
+:test
+echo.
+echo. Testin command app module
+pause
 goto MyDesktopSystem
-
-
 
 exit /b
 :log
